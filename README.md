@@ -13,7 +13,7 @@ Buatlah aplikasi web menggunakan React yang dapat menambahkan dan menghapus cata
 - Memanfaatkan controlled component dalam membuat form input.
 - Data catatan disimpan cukup pada memori saja (akan hilang jika browser di-refresh).
 - Data catatan yang disimpan merupakan objek JavaScript dengan struktur berikut.
-  ```
+```
 {
   id: number | string,
   title: string,
@@ -22,7 +22,6 @@ Buatlah aplikasi web menggunakan React yang dapat menambahkan dan menghapus cata
   createdAt: string,
 }
 ```
-
 ### Kriteria Utama 3: Mampu Menghapus Catatan
 - Aplikasi harus menyediakan tombol hapus untuk menghapus data catatan yang disimpan.
 - Terdapat conditional rendering di mana bila tidak terdapat data catatan, maka UI menampilkan pesan “Tidak ada catatan” atau pesan apa pun yang mengindikasikan data catatan kosong.
