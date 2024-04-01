@@ -32,7 +32,7 @@ class NotesInput extends React.Component {
 		this.setState({ title, remainingChars, isTitleActive, showLimitMessage });
 
 		if (title.length >= 50) {
-			this.titleInputRef.current.value = title.slice(0, 49); // Potong judul menjadi 50 karakter
+			this.titleInputRef.current.value = title.slice(0, 49);
 		}
 	}
 
