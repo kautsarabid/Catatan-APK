@@ -8,7 +8,11 @@ class NotesInput extends React.Component {
 			title: "",
 			body: "",
 			remainingChars: 50,
+			isTitleActive: true,
+			showLimitMessage: false,
 		};
+
+		this.titleInputRef = React.createRef();
 
 		this.onTitleChangeEventHandler = this.onTitleChangeEventHandler.bind(this);
 
@@ -22,7 +26,14 @@ class NotesInput extends React.Component {
 	onTitleLimitEventHandler(e) {
 		const title = e.target.value;
 		const remainingChars = 50 - title.length;
-		this.setState({ title, remainingChars });
+		const isTitleActive =
+			title.length <= 50 || title.length < this.state.title.length;
+		const showLimitMessage = title.length >= 50;
+		this.setState({ title, remainingChars, isTitleActive, showLimitMessage });
+
+		if (title.length >= 50) {
+			this.titleInputRef.current.value = title.slice(0, 49); // Potong judul menjadi 50 karakter
+		}
 	}
 
 	onTitleChangeEventHandler(e) {
@@ -53,6 +64,12 @@ class NotesInput extends React.Component {
 					Sisa Karakter : {this.state.remainingChars}
 				</p>
 
+				{this.state.showLimitMessage && (
+					<p className="note-input__title__char-limit">
+						Telah mencapai batas karakter
+					</p>
+				)}
+
 				<input
 					className="note-input__title"
 					type="text"
@@ -60,6 +77,7 @@ class NotesInput extends React.Component {
 					value={this.state.title}
 					onChange={this.onTitleChangeEventHandler}
 					onInput={this.onTitleLimitEventHandler}
+					ref={this.titleInputRef}
 					required
 				/>
 
